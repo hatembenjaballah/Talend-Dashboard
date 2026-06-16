@@ -1,0 +1,1 @@
+2026-06-12 00:18:59;SV11pB;SV11pB;SV11pB;VENTES;job_test_excel_jdbc_driver;Default;6;Java Exception;tDBRow_1;org.talend.sdk.component.api.exception.ComponentException:(java.sql.SQLException) Erreur SQL : The workbook already contains a sheet named 'users';1
