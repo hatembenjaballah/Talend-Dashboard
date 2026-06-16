@@ -1,0 +1,168 @@
+/* ====== Général ====== */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ====== Navbar ====== */
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+/* ====== Sidebar (filtres verticaux) ====== */
+.filter-sidebar {
+    background: #ffffff;
+    min-height: calc(100vh - 56px);
+    border-right: 1px solid #e9ecef;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+
+    /* --- Sticky sur tous les écrans --- */
+    position: sticky;
+    top: 70px;                     /* hauteur de la navbar */
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.sidebar-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.filter-sidebar .form-label {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 4px;
+}
+
+.filter-sidebar .form-select,
+.filter-sidebar .form-control {
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    font-size: 0.9rem;
+}
+
+.filter-sidebar .btn {
+    border-radius: 6px;
+}
+
+/* ====== Contenu principal ====== */
+.main-content {
+    padding: 25px;
+}
+
+/* ====== Cartes KPI ====== */
+.kpi-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+    border: none;
+    color: #ffffff;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+}
+
+.kpi-card .card-body {
+    padding: 1.2rem;
+}
+
+.kpi-card .card-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.kpi-card .card-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.kpi-executions { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.kpi-success   { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.kpi-duration   { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.kpi-errors     { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.kpi-rows       { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+
+/* ====== Tableaux ====== */
+.table-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px;
+}
+
+.table th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+}
+
+.table th[data-sort]:hover {
+    background-color: #f1f3f5;
+}
+
+.table th[data-sort]::after {
+    content: ' ↕';
+    font-size: 0.7rem;
+    color: #adb5bd;
+}
+
+/* ====== Pagination ====== */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 0 5px;
+}
+
+/* ====== Graphiques ====== */
+.chart-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px;
+    height: 100%;
+}
+
+.chart-wrapper canvas {
+    max-height: 300px;
+}
+
+/* ====== Cartes machines (admin) ====== */
+.machine-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: none;
+    height: 100%;
+}
+
+.machine-card .badge {
+    font-size: 0.75rem;
+}
+
+/* ====== Modal ====== */
+.modal-content {
+    border-radius: 12px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+    .filter-sidebar {
+        /* Sur mobile, on désactive le sticky et on remet un scroll normal */
+        position: relative;
+        top: auto;
+        max-height: none;
+        overflow-y: visible;
+    }
+    .main-content {
+        padding: 15px;
+    }
+}
