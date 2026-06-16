@@ -142,41 +142,14 @@ Pour cela, vous devez **ajouter les dépendances Maven** correspondantes et **mo
 ### 🔌 Protocoles supportés et exemples de configuration
 
 #### 1. FTP / FTPS
-- **Bibliothèque** : Apache Commons Net
-- **Dépendance Maven** :
-  ```xml
-  <dependency>
-      <groupId>commons-net</groupId>
-      <artifactId>commons-net</artifactId>
-      <version>3.9.0</version>
-  </dependency>
-  ```
 - **Chemin dans l’admin** :  
   `ftp://user:password@host:port/chemin/vers/stats_file.txt`
 
 #### 2. SFTP (SSH File Transfer Protocol)
-- **Bibliothèque** : JSch (ou Apache MINA SSHD)
-- **Dépendance Maven** :
-  ```xml
-  <dependency>
-      <groupId>com.jcraft</groupId>
-      <artifactId>jsch</artifactId>
-      <version>0.1.55</version>
-  </dependency>
-  ```
 - **Chemin dans l’admin** :  
   `sftp://user:password@host:port/chemin/vers/stats_file.txt`
 
 #### 3. SMB / CIFS (partage Windows)
-- **Bibliothèque** : SMBJ (recommandé) ou jcifs-ng
-- **Dépendance Maven** :
-  ```xml
-  <dependency>
-      <groupId>com.hierynomus</groupId>
-      <artifactId>smbj</artifactId>
-      <version>0.12.2</version>
-  </dependency>
-  ```
 - **Chemin dans l’admin** :  
   `smb://DOMAIN;user:password@host/Partage/chemin/stats_file.txt`  
   > Le domaine est optionnel. Exemple sans domaine : `smb://user:password@192.168.1.50/Logs/stats_file.txt`
@@ -190,50 +163,6 @@ Une implémentation de référence est fournie dans la classe `RemoteFileReader`
 - Ne stockez pas les mots de passe en clair dans `application.properties` ou en base de données. Utilisez des variables d’environnement ou un coffre‑fort.
 - Pour SFTP, préférez l’authentification par clé privée.
 - Pour SMB, utilisez `StrictHostKeyChecking=yes` en production.
-
-## 📁 Structure du projet
-
-```
-talend-dashboard/
-├── pom.xml
-├── README.md
-├── src/main/java/com/talend/talenddashboard/
-│   ├── TalendDashboardApplication.java
-│   ├── config/
-│   │   ├── MachineInitializer.java
-│   │   ├── MachineProperties.java
-│   │   └── SchedulerConfig.java
-│   ├── entity/
-│   │   ├── Machine.java
-│   │   ├── JobExecution.java
-│   │   ├── ErrorLog.java
-│   │   └── FlowMeter.java
-│   ├── repository/
-│   │   ├── MachineRepository.java
-│   │   ├── JobExecutionRepository.java
-│   │   ├── ErrorLogRepository.java
-│   │   └── FlowMeterRepository.java
-│   ├── service/
-│   │   ├── FileImportService.java
-│   │   └── DashboardService.java
-│   ├── controller/
-│   │   ├── DashboardController.java
-│   │   ├── AdminController.java
-│   │   └── rest/
-│   │       ├── DashboardRestController.java
-│   │       └── ExecutionController.java
-│   └── scheduler/ImportScheduler.java
-├── src/main/resources/
-│   ├── application.properties
-│   ├── static/
-│   │   ├── css/style.css
-│   │   └── js/dashboard.js
-│   └── templates/
-│       ├── fragments/header.html
-│       ├── dashboard.html
-│       └── admin.html
-└── ...
-```
 
 ## 🛠️ Technologies utilisées
 
