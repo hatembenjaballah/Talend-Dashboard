@@ -55,11 +55,11 @@ Elle lit les données d'exécution (stats, logs, meters) depuis des **fichiers l
 
 4. **Accéder au tableau de bord** : [http://localhost:8080](http://localhost:8080)  
 
-	![Dashboard.](/images/dashboard.PNG "Lancer l’ESB")
+	![Dashboard.](images/dashboard.png)
 
    **Interface d’administration** : [http://localhost:8080/admin](http://localhost:8080/admin)
    
-   ![Administrateur.](/images/admin.PNG "Lancer l’ESB")
+   ![Administrateur.](images/admin.png)
 
 ## 🧱 Configuration
 
