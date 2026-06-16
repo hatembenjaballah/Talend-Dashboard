@@ -27,7 +27,7 @@ public class DashboardRestController {
     @GetMapping("/kpis")
     public Map<String, Object> kpis(
             @RequestParam(required = false) String machine,
-            @RequestParam(required = false) String job,          // <-- AJOUTÉ
+            @RequestParam(required = false) String job,          
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return dashboardService.getKpis(machine, job, start, end);
@@ -36,7 +36,7 @@ public class DashboardRestController {
     @GetMapping("/duration-timeseries")
     public List<Map<String, Object>> durationTimeseries(
             @RequestParam(required = false) String machine,
-            @RequestParam(required = false) String job,          // <-- AJOUTÉ
+            @RequestParam(required = false) String job,          
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return dashboardService.durationTimeSeries(machine, job, start, end);
@@ -45,7 +45,7 @@ public class DashboardRestController {
     @GetMapping("/top5-longest")
     public List<Map<String, Object>> top5(
             @RequestParam(required = false) String machine,
-            @RequestParam(required = false) String job,          // <-- AJOUTÉ
+            @RequestParam(required = false) String job,          
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return dashboardService.top5LongestJobs(machine, job, start, end);
@@ -54,7 +54,7 @@ public class DashboardRestController {
     @GetMapping("/success-failure-job")
     public List<Map<String, Object>> successFailureByJob(
             @RequestParam(required = false) String machine,
-            @RequestParam(required = false) String job,          // <-- AJOUTÉ
+            @RequestParam(required = false) String job,          
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return dashboardService.successFailureByJob(machine, job, start, end);
@@ -63,13 +63,13 @@ public class DashboardRestController {
     @GetMapping("/volume-by-job")
     public List<Map<String, Object>> volumeByJob(
             @RequestParam(required = false) String machine,
-            @RequestParam(required = false) String job,          // <-- AJOUTÉ
+            @RequestParam(required = false) String job,          
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return dashboardService.volumeByJob(machine, job, start, end);
     }
 
-    // Liste déroulante des jobs : ne doit PAS être filtrée par job
+    
     @GetMapping("/jobs")
     public List<String> distinctJobs(
             @RequestParam(required = false) String machine,

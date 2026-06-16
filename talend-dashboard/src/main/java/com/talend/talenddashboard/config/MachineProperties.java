@@ -18,8 +18,7 @@ public class MachineProperties {
         private StatsPath stats = new StatsPath();
         private LogsPath logs = new LogsPath();
         private MetersPath meters = new MetersPath();
-
-        // Getters & setters
+ 
         public String getName() { return name; }
         public void setName(String name) { this.name = name; }
         public StatsPath getStats() { return stats; }

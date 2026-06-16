@@ -39,16 +39,14 @@ public class AdminController {
     }
 
     @GetMapping("/machine/{id}/delete")
-    @Transactional   // <-- AJOUTEZ CETTE ANNOTATION
+    @Transactional   
     public String delete(@PathVariable Long id) {
         Machine machine = machineRepo.findById(id).orElse(null);
         if (machine != null) {
             String machineName = machine.getName();
 
-            // Suppression des données liées
             deleteAllDataForMachine(machineName);
 
-            // Suppression de la machine
             machineRepo.deleteById(id);
         }
         return "redirect:/admin";

@@ -24,7 +24,7 @@ public class ExecutionController {
         this.meterRepo = meterRepo;
     }
 
-    // --- Version paginée, triée et filtrable par job ---
+
     @GetMapping("/api/executions")
     public Map<String, Object> getExecutions(
             @RequestParam(required = false) String machine,
@@ -36,7 +36,7 @@ public class ExecutionController {
             @RequestParam(defaultValue = "startTime") String sortField,
             @RequestParam(defaultValue = "desc") String sortOrder) {
 
-        // 1. Filtrage
+       
         List<JobExecution> filtered = jobRepo.findAll().stream()
                 .filter(j -> machine == null || machine.isEmpty() || j.getMachineName().equals(machine))
                 .filter(j -> job == null || job.isEmpty() || j.getJobName().equalsIgnoreCase(job))
@@ -44,7 +44,7 @@ public class ExecutionController {
                 .filter(j -> end == null || (j.getStartTime() != null && !j.getStartTime().isAfter(end)))
                 .collect(Collectors.toList());
 
-        // 2. Tri
+       
         Comparator<JobExecution> comparator;
         switch (sortField) {
             case "jobName":
@@ -65,12 +65,12 @@ public class ExecutionController {
         }
         filtered.sort(comparator);
 
-        // 3. Pagination
+       
         int totalElements = filtered.size();
         int totalPages = (int) Math.ceil((double) totalElements / size);
         int fromIndex = page * size;
         if (fromIndex >= totalElements && totalElements > 0) {
-            fromIndex = 0;   // sécurité
+            fromIndex = 0;   
         }
         int toIndex = Math.min(fromIndex + size, totalElements);
         List<JobExecution> paged = totalElements > 0 ? filtered.subList(fromIndex, toIndex) : Collections.emptyList();
@@ -84,7 +84,7 @@ public class ExecutionController {
         return result;
     }
 
-    // --- Détails : erreurs liées par executionId (qui est le PID) ---
+
     @GetMapping("/api/executions/by-exec-id/{executionId}/errors")
     public List<ErrorLog> errorsByExecId(@PathVariable String executionId) {
         return errorRepo.findAll().stream()
@@ -92,7 +92,7 @@ public class ExecutionController {
                 .collect(Collectors.toList());
     }
 
-    // --- Détails : meters liés par executionId ---
+
     @GetMapping("/api/executions/by-exec-id/{executionId}/meters")
     public List<FlowMeter> metersByExecId(@PathVariable String executionId) {
         return meterRepo.findAll().stream()

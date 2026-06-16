@@ -58,7 +58,6 @@ public class FileImportService {
         }
     }
 
-    // ===================== STATS =====================
     private void importStats(Machine machine) {
         if (machine.getJdbcUrl() != null && !machine.getJdbcUrl().isEmpty()) {
             if (tableExists(machine, "statcatcher")) {
@@ -179,7 +178,6 @@ public class FileImportService {
         }
     }
 
-    // ===================== LOGS =====================
     private void importLogs(Machine machine) {
         if (machine.getJdbcUrl() != null && !machine.getJdbcUrl().isEmpty()) {
             if (tableExists(machine, "logcatcher")) {
@@ -269,7 +267,6 @@ public class FileImportService {
         }
     }
 
-    // ===================== METERS =====================
     private void importMeters(Machine machine) {
         if (machine.getJdbcUrl() != null && !machine.getJdbcUrl().isEmpty()) {
             if (tableExists(machine, "flowmeter")) {
@@ -373,7 +370,6 @@ public class FileImportService {
         }
     }
 
-    // ===================== JDBC Helper =====================
     private JdbcTemplate createJdbcTemplate(Machine machine) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(machine.getJdbcUrl());

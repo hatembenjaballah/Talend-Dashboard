@@ -18,7 +18,7 @@ public class ErrorLog {
     private String exceptionMessage;
     private String executionId;
 
-    // Getters & setters...
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getMachineName() { return machineName; }

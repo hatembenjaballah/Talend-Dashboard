@@ -22,7 +22,6 @@ public class DashboardService {
         this.meterRepo = meterRepo;
     }
 
-    // Filtre générique utilisé par toutes les méthodes
     private List<JobExecution> filterJobs(String machine, String job, LocalDateTime start, LocalDateTime end) {
         return jobRepo.findAll().stream()
                 .filter(j -> machine == null || machine.isEmpty() || j.getMachineName().equals(machine))
@@ -40,13 +39,11 @@ public class DashboardService {
         double avgDuration = jobs.stream().filter(j -> j.getDurationMs() != null)
                 .mapToLong(JobExecution::getDurationMs).average().orElse(0);
 
-        // Erreurs : on filtre par machine, job et plage de dates (via les jobs correspondants)
         List<String> jobExecutionIds = jobs.stream().map(JobExecution::getExecutionId).collect(Collectors.toList());
         long totalErrors = errorRepo.findAll().stream()
                 .filter(e -> jobExecutionIds.contains(e.getExecutionId()))
                 .count();
 
-        // Meters : idem
         long totalRows = meterRepo.findAll().stream()
                 .filter(m -> jobExecutionIds.contains(m.getExecutionId()))
                 .mapToLong(FlowMeter::getValue).sum();
@@ -103,7 +100,6 @@ public class DashboardService {
     }
 
     public List<Map<String, Object>> volumeByJob(String machine, String job, LocalDateTime start, LocalDateTime end) {
-        // On filtre les meters en se basant sur les executionIds des jobs filtrés
         List<String> jobExecutionIds = filterJobs(machine, job, start, end).stream()
                 .map(JobExecution::getExecutionId).collect(Collectors.toList());
         List<FlowMeter> meters = meterRepo.findAll().stream()

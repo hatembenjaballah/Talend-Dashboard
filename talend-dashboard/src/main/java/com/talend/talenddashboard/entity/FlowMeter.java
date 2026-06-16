@@ -15,10 +15,10 @@ public class FlowMeter {
     private LocalDateTime timestamp;
     private String meterName;
     private String counterName;
-    private Long value;         // count
-    private Long reference;     // ← nouveau champ
+    private Long value;         
+    private Long reference;     
     @Column(length = 500)
-    private String thresholds; // JSON / texte des seuils
+    private String thresholds; 
     private String executionId;
 
     public FlowMeter() {}

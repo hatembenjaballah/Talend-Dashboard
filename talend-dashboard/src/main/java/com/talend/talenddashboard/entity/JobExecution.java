@@ -32,7 +32,6 @@ public class JobExecution {
 
     public enum ExecutionStatus { SUCCESS, FAILURE, RUNNING }
 
-    // Constructeurs, getters & setters...
     public JobExecution() {}
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
